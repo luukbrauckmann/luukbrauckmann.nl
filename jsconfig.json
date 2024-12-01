@@ -3,9 +3,9 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@blocks": ["src/blocks"],
-      "@components": ["src/components"],
-      "@layouts": ["src/layouts"],
+      "@blocks": ["src/blocks/"],
+      "@components": ["src/components/"],
+      "@layouts": ["src/layouts/"],
       "@lib/*": ["src/lib/*"]
     },
     "checkJs": true,

@@ -10,7 +10,9 @@
   },
   "dependencies": {
     "@datocms/astro": "^0.3.5",
-    "astro": "^5.0.0-beta.12"
+    "@datocms/cda-client": "^0.2.2",
+    "astro": "^5.0.0-beta.12",
+    "graphql": "^16.9.0"
   },
   "devDependencies": {
     "@astrojs/ts-plugin": "^1.10.4",

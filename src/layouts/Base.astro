@@ -1,16 +1,23 @@
 ---
+import type { SeoOrFaviconTag, TitleMetaLinkTag } from "@datocms/astro";
+
+import { Seo } from "@datocms/astro";
 import "@lib/css/all.css";
 
-const { locale } = Astro.props;
+interface Props {
+  locale: string;
+  seo: TitleMetaLinkTag[] | SeoOrFaviconTag[];
+}
+
+const { locale, seo } = Astro.props;
 ---
 
 <html lang={locale}>
   <head>
     <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
-    <title>Astro</title>
+    <Seo data={seo} />
   </head>
   <body>
     <slot />

@@ -1,0 +1,16 @@
+query HomePage($locale: SiteLocale) {
+  site: _site(locale: $locale) {
+    favIcon: faviconMetaTags {
+      attributes
+      content
+      tag
+    }
+  }
+  page: home(locale: $locale) {
+    seo: _seoMetaTags {
+      attributes
+      content
+      tag
+    }
+  }
+}

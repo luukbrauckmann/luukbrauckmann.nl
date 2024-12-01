@@ -1,21 +1,3 @@
-# Luuk Brauckmann
+# Hi I'm Luuk
 
-## 📦 Contents
-- [Description](#description)
-- [Usage](#usage)
-- [Characteristics](#characteristics)
-- [Installation](#installation)
-- [Sources](#sources)
-- [Licenses](#licenses)
-
-## ℹ️ Description
-
-## 🖥️ Usage
-
-## ✨ Characteristics
-
-## 📥 Installation
-
-## 🌍 Sources
-
-## 🪪 Licenses
+I'm a front-end developer based in the Netherlands.

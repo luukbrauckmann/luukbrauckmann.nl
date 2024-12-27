@@ -1,0 +1,70 @@
+---
+import type { HeroBlockFragment } from "@generated/types/datocms";
+
+import { Image } from "@datocms/astro";
+import { Button } from "@components";
+import { GitHubStats } from "@components";
+
+interface Props extends HeroBlockFragment {}
+
+const { title, image } = Astro.props;
+---
+
+<div class="hero-block">
+  <div class="hero-block__visual"></div>
+  <div class="hero-block__content">
+    <div class="hero-block__content__header">
+      <div class="hero-block-image">
+        <Image data={image.responsiveImage} />
+      </div>
+
+      <Button>Nederlands</Button>
+      <Button variant="secondary">M</Button>
+    </div>
+
+    <div class="hero-block-title">
+      <h1>Luuk Brauckmann</h1>
+      <GitHubStats server:defer />
+    </div>
+
+    <p>I create User-Friendly and Inclusive Web Experiences</p>
+  </div>
+</div>
+
+<style>
+  .hero-block__visual {
+    height: 150px;
+  }
+
+  .hero-block__content {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    gap: 1.5rem;
+    background-color: #1b263b;
+    padding: 1.5rem 2rem;
+    min-height: 150px;
+  }
+
+  .hero-block__content__header {
+    display: flex;
+    position: relative;
+    justify-content: flex-end;
+    gap: 0.5rem;
+    padding-inline-start: 125px;
+  }
+
+  .hero-block-image {
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    width: 125px;
+    height: 125px;
+  }
+
+  .hero-block-title {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+</style>

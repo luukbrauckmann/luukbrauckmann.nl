@@ -1,15 +1,18 @@
 {
   "extends": "astro/tsconfigs/strictest",
   "compilerOptions": {
-    "baseUrl": ".",
-    "paths": {
-      "@blocks": ["src/blocks/"],
-      "@components": ["src/components/"],
-      "@layouts": ["src/layouts/"],
-      "@lib/*": ["src/lib/*"]
-    },
     "checkJs": true,
     "allowJs": true,
+    "baseUrl": ".",
+    "paths": {
+      "@generated/*": [".generated/*"],
+      "@integrations/*": ["integrations/*"],
+      "@layouts": ["src/layouts"],
+      "@blocks": ["src/blocks"],
+      "@blocks/*": ["src/blocks/*"],
+      "@components": ["src/components"],
+      "@components/*": ["src/components/*"],
+    },
     "plugins": [
       {
         "name": "@astrojs/ts-plugin"

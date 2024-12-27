@@ -1,0 +1,18 @@
+fragment HeroBlock on HeroBlockRecord {
+  title
+  image {
+    responsiveImage(imgixParams: {auto: format, w: "1440"}) {
+      alt
+      aspectRatio
+      base64
+      bgColor
+      height
+      sizes
+      src
+      srcSet
+      title
+      webpSrcSet
+      width
+    }
+  }
+}

@@ -1,0 +1,11 @@
+:root {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-size: 1.125rem;
+}
+
+body {
+  position: relative;
+  margin-inline: auto;
+  max-width: 50ch;
+}

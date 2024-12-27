@@ -1,0 +1,39 @@
+---
+import { executeQuery } from "src/scripts/github";
+import {Pill} from "@components";
+
+const query = `
+    query {
+      viewer {
+        contributionsCollection {
+          totalCommitContributions
+          totalPullRequestContributions
+          totalPullRequestReviewContributions
+        }
+      }
+    }
+  `;
+
+const { data } = await executeQuery(query);
+
+const {
+  totalCommitContributions,
+  totalPullRequestContributions,
+  totalPullRequestReviewContributions
+} = data.viewer.contributionsCollection;
+---
+
+<section class="github-stats">
+  <h3 class="sr-only">GitHub Stats</h3>
+
+  <Pill>{totalCommitContributions} commits</Pill>
+  <Pill>{totalPullRequestContributions} pull requests</Pill>
+  <Pill>{totalPullRequestReviewContributions} reviews</Pill>
+</section>
+
+<style>
+  .github-stats {
+    display: flex;
+    gap: 0.5rem;
+  }
+</style>

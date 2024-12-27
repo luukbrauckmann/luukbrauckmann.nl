@@ -1,0 +1,22 @@
+---
+import type { HTMLTag, Polymorphic } from "astro/types";
+
+type Props<Tag extends HTMLTag> = Polymorphic<{
+  as: Tag;
+}>;
+
+const { as: Tag = "p", ...props } = Astro.props;
+---
+
+<Tag class:list={"pill"}>
+  <slot />
+</Tag>
+
+<style>
+  .pill {
+    border-radius: 0.75rem;
+    background-color: rgba(230, 234, 245, 0.40);
+    padding: 0.25rem 0.5rem;
+    line-height: 1;
+  }
+</style>

@@ -1,0 +1,30 @@
+---
+import type { Polymorphic } from "astro/types";
+
+type Props<Tag extends "h1" | "p"> = Polymorphic<{
+  as: Tag;
+}>;
+
+const { as: Tag = "p", ...props } = Astro.props;
+---
+
+<div>
+  <Tag class:list={["decorated-text"]} {...props}>
+    <slot />
+  </Tag>
+</div>
+
+<style>
+  .decorated-text {
+    --offset-x: 0.2em;
+    --offset-y: 0.3em;
+    display: inline;
+    box-decoration-break: clone;
+    -webkit-box-decoration-break: clone;
+    background-image: linear-gradient(#acb7c3, #acb7c3);
+    background-position: calc(var(--offset-x) * -1) var(--offset-y);
+    background-repeat: no-repeat;
+    padding-inline-start: var(--offset-x);
+    line-height: 1.1;
+  }
+</style>

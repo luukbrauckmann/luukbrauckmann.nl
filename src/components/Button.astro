@@ -1,0 +1,54 @@
+---
+import type { Polymorphic } from "astro/types";
+import { Icon } from "@components";
+
+type Props<Tag extends "button" | "a"> = Polymorphic<{
+  as: Tag;
+  icon?: string;
+  iconOnly?: boolean;
+  variant?: "primary" | "secondary";
+}>;
+
+const { as: Tag = "button", icon, iconOnly, variant = "primary", ...props } = Astro.props;
+---
+
+<Tag class:list={[
+  "button",
+  `button--${variant}`,
+  { "button--icon-only": iconOnly }
+]} {...props}>
+  <span class:list={["button__label", { "sr-only": iconOnly }]}>
+    <slot />
+  </span>
+  {icon && <Icon class="button__icon" name={icon} />}
+</Tag>
+
+<style>
+  .button {
+    display: inline-flex;
+    border: 1px solid var(--button-color);
+    border-radius: 1.5rem;
+    background-color: var(--button-color);
+    padding: 0.5rem 1rem;
+    color: var(--button-color-text);
+    line-height: 1;
+  }
+
+  .button--primary {
+    --button-color: #0070B6;
+    --button-color-text: #F5F5F2;
+  }
+
+  .button--secondary {
+    --button-color: #E6EAF5;
+    --button-color-text: #0D1B2A;
+  }
+
+  .button--icon-only {
+    padding: 0.5rem;
+  }
+
+  .button__label {
+    font-weight: bold;
+  }
+</style>

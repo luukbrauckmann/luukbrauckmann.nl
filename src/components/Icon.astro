@@ -1,0 +1,23 @@
+---
+import type { HTMLAttributes } from "astro/types";
+
+interface Props extends HTMLAttributes<"svg"> {
+  name: string;
+  class?: string;
+}
+
+const { name, class: externalClass, ...props } = Astro.props;
+---
+
+<svg class:list={["icon", externalClass]} {...props}>
+  <use href={`#${name}`} xlink:href={`#${name}`} />
+</svg>
+
+<style>
+  .icon {
+    width: 1em;
+    height: 1em;
+    fill: currentColor;
+    line-height: 1;
+  }
+</style>

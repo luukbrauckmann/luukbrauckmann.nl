@@ -1,7 +1,9 @@
 ---
+import { SiteLocale, type PageQuery, type PageQueryVariables } from "@generated/types/datocms";
 import { Base } from "@layouts";
-import { executeQuery } from "@lib/ts/datocms";
-import query from "./_index.graphql?raw";
+import { executeQuery } from "src/scripts/datocms";
+import query from "../PageQuery.graphql";
+import { Blocks } from "@blocks";
 
 export const getStaticPaths = () => [
   { params: { locale: "en" } },
@@ -10,9 +12,12 @@ export const getStaticPaths = () => [
 
 const { locale } = Astro.params;
 
-const data = await executeQuery(query, { locale });
+const { site, page } = await executeQuery<PageQuery, PageQueryVariables>(query, {
+  id: "KEBIdQssRKWuLC4h-5NHVQ",
+  locale: locale as SiteLocale,
+});
 ---
 
-<Base {locale} seo={[...data.site.favIcon, ...data.page.seo]}>
-  <h1>Astro</h1>
+<Base {locale} favicon={site.faviconMetaTags} seo={page._seoMetaTags}>
+  <Blocks blocks={page.body} />
 </Base>

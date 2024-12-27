@@ -1,0 +1,24 @@
+#import '@blocks/HeroBlock/HeroBlockFragment.graphql'
+
+query Page($id: ItemId, $locale: SiteLocale) {
+  site: _site {
+    faviconMetaTags {
+      attributes
+      tag
+      content
+    }
+  }
+
+  page(filter: { id: { eq: $id } }, locale: $locale) {
+    _seoMetaTags {
+      attributes
+      content
+      tag
+    }
+    title
+    body {
+      __typename
+      ...HeroBlock
+    }
+  }
+}

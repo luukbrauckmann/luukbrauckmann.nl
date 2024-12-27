@@ -1,0 +1,17 @@
+---
+const blockFiles = import.meta.glob("@blocks/**/*.astro");
+const blockFilesNames = Object.keys(blockFiles);
+
+const { blocks } = Astro.props;
+---
+
+{
+  blocks.map(async (block: any) => {
+    const blockName = block.__typename.replace("Record", "");
+    const filePath = blockFilesNames.find((path) => path.includes(blockName));
+    if (filePath) {
+      const Block = (await blockFiles[filePath]()).default;
+      return <Block {...block} />;
+    };
+  })
+}

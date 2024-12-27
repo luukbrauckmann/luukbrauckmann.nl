@@ -1,0 +1,14 @@
+---
+import { DecoratedText } from "@components";
+import { Base } from "@layouts";
+
+export const getStaticPaths = async () => {
+  return [];
+};
+
+const { locale, page } = Astro.params;
+---
+
+<!-- <Base {locale} seo={page._seoMetaTags}>
+    <DecoratedText as="h1">{page.title}</DecoratedText>
+</Base> -->

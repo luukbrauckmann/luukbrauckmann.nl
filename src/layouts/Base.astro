@@ -65,15 +65,18 @@ const { locale, favicon, seo } = Astro.props;
       "header"
       "main"
       "footer";
+    margin-inline: auto;
     min-height: 100dvh;
   }
 
   @media screen and (min-width: 880px) {
     .page {
       grid-template-rows: 1fr auto;
+      grid-template-columns: auto 1fr;
       grid-template-areas:
         "header main"
         "header footer";
+      width: calc(65ch + 15rem);
     }
   }
 
@@ -90,11 +93,13 @@ const { locale, favicon, seo } = Astro.props;
       justify-content: start;
       border-inline-end: 1px solid #1b263b;
       padding: 0.5rem 2rem;
+      width: 15rem;
     }
   }
 
   .page__main {
     grid-area: main;
+    max-width: 65ch;
   }
 
   .page__footer {

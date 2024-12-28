@@ -8,15 +8,16 @@ type Props<Tag extends HTMLTag> = Polymorphic<{
 const { as: Tag = "p", ...props } = Astro.props;
 ---
 
-<Tag class:list={"pill"}>
+<Tag class:list={"pill"} {...props}>
   <slot />
 </Tag>
 
 <style>
   .pill {
     border-radius: 0.75rem;
-    background-color: rgba(230, 234, 245, 0.40);
+    background-color: rgba(230, 234, 245, 0.4);
     padding: 0.25rem 0.5rem;
+    font-size: 0.5rem;
     line-height: 1;
   }
 </style>

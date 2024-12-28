@@ -8,6 +8,7 @@ import "../styles/core.css";
 import "../styles/reset.css";
 import "../styles/typography.css";
 import "../styles/variables.css";
+import { Logo, Menu } from "@components";
 
 interface Props {
   locale: string;
@@ -25,16 +26,85 @@ const { locale, favicon, seo } = Astro.props;
     <meta name="generator" content={Astro.generator} />
     <Seo data={[...favicon, ...seo]} />
 
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap"
-      rel="stylesheet"
+      rel="preload"
+      as="font"
+      type="font/ttf"
+      href="/fonts/Nunito/Nunito-regular.ttf"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="preload"
+      as="font"
+      type="font/woff2"
+      href="/fonts/Dash/Dash-Light.woff2"
+      crossorigin="anonymous"
     />
   </head>
-  <body>
-    <main>
+  <body class="page">
+    <header class="page__header">
+      <Logo />
+      <Menu />
+    </header>
+
+    <main class="page__main">
       <slot />
     </main>
+
+    <footer class="page__footer">
+      <p class="copyright">© {new Date().getFullYear()} Luuk Brauckmann</p>
+    </footer>
   </body>
 </html>
+
+<style>
+  .page {
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    grid-template-areas:
+      "header"
+      "main"
+      "footer";
+    min-height: 100dvh;
+  }
+
+  @media screen and (min-width: 880px) {
+    .page {
+      grid-template-rows: 1fr auto;
+      grid-template-areas:
+        "header main"
+        "header footer";
+    }
+  }
+
+  .page__header {
+    display: flex;
+    grid-area: header;
+    justify-content: center;
+    padding-block: 0.5rem;
+  }
+
+  @media screen and (min-width: 880px) {
+    .page__header {
+      flex-direction: column;
+      justify-content: start;
+      border-inline-end: 1px solid #1b263b;
+      padding: 0.5rem 2rem;
+    }
+  }
+
+  .page__main {
+    grid-area: main;
+  }
+
+  .page__footer {
+    grid-area: footer;
+    background-color: #415a77;
+    padding: 0.5rem 2rem;
+  }
+
+  .copyright {
+    font-size: 0.5rem;
+    line-height: 1;
+  }
+</style>

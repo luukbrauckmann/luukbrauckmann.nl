@@ -4,9 +4,7 @@ import graphql from "@rollup/plugin-graphql";
 import cloudflare from "@astrojs/cloudflare";
 
 export default defineConfig({
-  adapter: cloudflare({
-    imageService: "passthrough"
-  }),
+  adapter: cloudflare(),
   site: "https://luuk.network/",
   env: {
     schema: {

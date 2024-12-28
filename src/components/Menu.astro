@@ -45,6 +45,12 @@ const menuItems = [
     z-index: 2;
   }
 
+  @media screen and (min-width: 880px) {
+    .menu-toggle-button {
+      display: none;
+    }
+  }
+
   .menu-toggle-button--open:has(~ #menu:target),
   .menu-toggle-button--close {
     display: none;
@@ -56,8 +62,6 @@ const menuItems = [
 
   #menu {
     position: absolute;
-    right: 2rem;
-    bottom: 2rem;
     opacity: 0;
     z-index: 1;
     transition:
@@ -70,6 +74,19 @@ const menuItems = [
     width: 2.5rem;
     height: 2.5rem;
     overflow: hidden;
+  }
+
+  @media screen and (min-width: 880px) {
+    #menu {
+      position: initial;
+      right: unset;
+      bottom: unset;
+      opacity: 1;
+      background-color: transparent;
+      width: auto;
+      height: auto;
+      overflow: visible;
+    }
   }
 
   #menu:target {
@@ -88,13 +105,21 @@ const menuItems = [
 
   .menu-list {
     display: flex;
+    flex-direction: column;
     margin: 0;
     padding: 0;
     list-style-type: "";
   }
 
   .link {
-    display: inline-block;
+    display: block;
     padding: 0.5rem 1rem;
+  }
+
+  @media screen and (min-width: 880px) {
+    .link {
+      margin-inline: -2rem;
+      padding: 0.5rem 2rem;
+    }
   }
 </style>

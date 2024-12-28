@@ -4,9 +4,8 @@
 
   --color-primary: #009DFF;
 
-  --breakpoint-xs: 320px;
-  --breakpoint-sm: 600px;
-  --breakpoint-md: 880px;
-  --breakpoint-lg: 1160px;
-  --breakpoint-xl: 1440px;
+  --breakpoint-phone: 320px;
+  --breakpoint-tablet: 600px;
+  --breakpoint-laptop: 880px;
+  --breakpoint-desktop: 1160px;
 }

@@ -1,8 +1,15 @@
 @font-face {
+  font-family: "Nunito";
+  font-style: normal;
+  font-weight: 500;
+  src: url("/fonts/Nunito/Nunito-Regular.ttf") format("ttf");
+}
+
+@font-face {
   font-family: "Dash";
   font-style: normal;
   font-weight: 400;
-  src: url("/fonts/DashCasualL-Light.woff2") format("woff2");
+  src: url("/fonts/Dash/Dash-Light.woff2") format("woff2");
 }
 
 body {
